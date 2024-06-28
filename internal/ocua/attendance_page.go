@@ -125,15 +125,7 @@ func parseAttendanceBody(table *goquery.Selection) []attendanceTableRow {
 	return attendanceRows
 }
 
-func GetAttendance(teamID string, context playwright.BrowserContext) ([]Attendance, error) {
-	page, err := GetAttendancePage(teamID, context)
-	if err != nil {
-		return nil, err
-	}
-	return ParseAttendancePage(page)
-}
-
-func GetAttendancePage(teamID string, context playwright.BrowserContext) (io.Reader, error) {
+func GetAttendancePage(teamID string, context playwright.BrowserContext) (*bytes.Buffer, error) {
 	page, err := context.NewPage()
 	if err != nil {
 		return nil, err

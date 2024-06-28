@@ -1,6 +1,8 @@
 package ocua
 
-import "github.com/playwright-community/playwright-go"
+import (
+	"github.com/playwright-community/playwright-go"
+)
 
 func Login(email, password string, context playwright.BrowserContext) error {
 	page, err := context.NewPage()

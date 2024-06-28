@@ -17,15 +17,7 @@ type Player struct {
 	Gender string
 }
 
-func GetTeam(teamID string, context playwright.BrowserContext) (map[string]Player, error) {
-	page, err := GetTeamPage(teamID, context)
-	if err != nil {
-		return nil, err
-	}
-	return ParseTeamPage(page)
-}
-
-func GetTeamPage(teamID string, context playwright.BrowserContext) (io.Reader, error) {
+func GetTeamPage(teamID string, context playwright.BrowserContext) (*bytes.Buffer, error) {
 	page, err := context.NewPage()
 	if err != nil {
 		return nil, err
